@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-const DeckListPage = () => (
+const DeckListScreen = () => (
   <View>
-    <Text>NewDeckPage</Text>
+    <Text>NewDeckScreen</Text>
   </View>
 )
 
-export default DeckListPage
+export default DeckListScreen
