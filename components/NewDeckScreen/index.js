@@ -3,7 +3,6 @@ import {
   View,
   Text,
   Button,
-  TouchableOpacity,
   TextInput,
   StyleSheet
 } from 'react-native'
@@ -35,18 +34,18 @@ const styles = StyleSheet.create({
 
 class DeckListScreen extends Component {
   state = {
-    deckName: ''
+    deckTitle: ''
   }
 
-  handleChangeText = deckName => {
-    this.setState({ deckName })
+  handleChangeText = deckTitle => {
+    this.setState({ deckTitle })
   }
 
   handleSubmit = () => {
-    const { deckName } = this.state
+    const { deckTitle } = this.state
     const { handleCreateDeck } = this.props
 
-    handleCreateDeck({ title: deckName })
+    handleCreateDeck(deckTitle)
   }
 
   render() {
@@ -60,7 +59,7 @@ class DeckListScreen extends Component {
         <TextInput
           style={styles.textInput}
           onChangeText={this.handleChangeText}
-          value={this.state.deckName}
+          value={this.state.deckTitle}
         />
         <Button
           title="Create Deck"
@@ -72,7 +71,7 @@ class DeckListScreen extends Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleCreateDeck: (deck) => dispatch(handleCreateDeck(deck)),
+  handleCreateDeck: (deckTitle) => dispatch(handleCreateDeck(deckTitle)),
   ...ownProps
 })
 

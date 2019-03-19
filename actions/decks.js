@@ -1,3 +1,5 @@
+import { formatDeck, _createDeck } from '../utils/api'
+
 export const CREATE_DECK = 'CREATE_DECK'
 
 const createDeck = deck => ({
@@ -5,6 +7,9 @@ const createDeck = deck => ({
   deck
 })
 
-export const handleCreateDeck = deck => dispatch => (
-  dispatch(createDeck(deck))
-)
+export const handleCreateDeck = deckTitle => dispatch => {
+  const deck = formatDeck(deckTitle)
+
+  return _createDeck(deck)
+    .then(() => dispatch(createDeck(deck)))
+}
