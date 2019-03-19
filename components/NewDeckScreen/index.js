@@ -8,7 +8,10 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { gray, blue, white } from '../../utils/colors'
+import { connect } from 'react-redux'
+import { handleCreateDeck } from '../../actions/decks'
+
+import { gray } from '../../utils/colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +43,10 @@ class DeckListScreen extends Component {
   }
 
   handleSubmit = () => {
-    console.log(this.state.deckName)
+    const { deckName } = this.state
+    const { handleCreateDeck } = this.props
+
+    handleCreateDeck({ title: deckName })
   }
 
   render() {
@@ -58,11 +64,16 @@ class DeckListScreen extends Component {
         />
         <Button
           title="Create Deck"
-          onPress={this.onPress}
+          onPress={this.handleSubmit}
         />
       </View>
     )
   }
 }
 
-export default DeckListScreen
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleCreateDeck: (deck) => dispatch(handleCreateDeck(deck)),
+  ...ownProps
+})
+
+export default connect(null, mapDispatchToProps)(DeckListScreen)
