@@ -8,7 +8,7 @@ const generateUID = () => {
   return rndStr() + rndStr()
 }
 
-export const formatDeck = title => {
+const formatDeck = title => {
   const id = generateUID()
   return {
     [id]: {
@@ -19,6 +19,16 @@ export const formatDeck = title => {
   }
 }
 
-export const _createDeck = deck => {
-  return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify(deck))
+export const _createDeck = deckTitle => {
+  const deck = formatDeck(deckTitle)
+
+  return AsyncStorage
+    .mergeItem(DECK_STORAGE_KEY, JSON.stringify(deck))
+    .then(() => deck)
 }
+
+export const _receiveDecks = () => (
+  AsyncStorage
+    .getItem(DECK_STORAGE_KEY)
+    .then(decks => JSON.parse(decks))
+)

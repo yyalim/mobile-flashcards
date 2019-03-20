@@ -1,4 +1,4 @@
-import { CREATE_DECK } from '../actions/decks'
+import { CREATE_DECK, RECEIVE_DECKS } from '../actions/decks'
 
 const decks = (state = {}, action) => {
   switch(action.type) {
@@ -6,6 +6,11 @@ const decks = (state = {}, action) => {
       return {
         ...state,
         ...action.deck
+      }
+    case RECEIVE_DECKS:
+      return {
+        ...state,
+        ...action.decks
       }
   }
   return state
