@@ -43,9 +43,18 @@ class DeckListScreen extends Component {
 
   handleSubmit = () => {
     const { deckTitle } = this.state
-    const { handleCreateDeck } = this.props
+    const { handleCreateDeck, navigation } = this.props
 
     handleCreateDeck(deckTitle)
+      .then(action => {
+        const { deck } = action
+        const id = Object.keys(deck)[0]
+        const { title } = deck[id]
+
+        navigation.navigate('DeckScreen', {
+          id, title
+        })
+      } )
   }
 
   render() {

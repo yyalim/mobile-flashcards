@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View, Text, StyleSheet } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList
+} from 'react-native'
 
 import { handleReceiveDecks } from '../../actions/decks'
 
+import DeckLink from './DeckLink'
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   }
 })
 
@@ -15,17 +22,39 @@ class DeckListScreen extends Component {
     this.props.handleReceiveDecks()
   }
 
+  handleNavigation = (deck) => {
+    const { id, title } = deck
+
+    this.props.navigation.navigate('DeckScreen', {
+      id, title
+    })
+  }
+
+  keyExtractor = item => item.id
+
+  renderItem = item => <DeckLink
+    deck={item.item}
+    handleNavigation={this.handleNavigation}
+  />
+
   render() {
+    const { decks } = this.props
+    const { keyExtractor, renderItem } = this
+
     return (
       <View style={styles.container}>
-        <Text>DeckListScreen</Text>
+        <FlatList
+          data={decks}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+        />
       </View>
     )
   }
 }
 
 const mapStateToProps = ({ decks }, ownProps) => ({
-  decks,
+  decks: Object.keys(decks).map(id => decks[id]),
   ...ownProps
 })
 

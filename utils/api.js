@@ -14,7 +14,7 @@ const formatDeck = title => {
     [id]: {
       id,
       title,
-      quetions: []
+      cards: []
     }
   }
 }
@@ -32,3 +32,7 @@ export const _receiveDecks = () => (
     .getItem(DECK_STORAGE_KEY)
     .then(decks => JSON.parse(decks))
 )
+
+export const _removeDecks = () => {
+  AsyncStorage.removeItem(DECK_STORAGE_KEY)
+}

@@ -6,15 +6,16 @@ import {
 
 import DeckListScreen from '../DeckListScreen'
 import NewDeckScreen from '../NewDeckScreen'
+import DeckScreen from '../DeckScreen'
 
 const TabNavigator = createMaterialTopTabNavigator({
-  DeckListPage: {
+  DeckListScreen: {
     screen: DeckListScreen,
     navigationOptions: {
       title: 'Decks'
     }
   },
-  NewDeckPage: {
+  NewDeckScreen: {
     screen: NewDeckScreen,
     navigationOptions: {
       title: 'Add Deck'
@@ -27,9 +28,15 @@ const TabNavigator = createMaterialTopTabNavigator({
 })
 
 const StackNavigator = createStackNavigator({
-  Home: {
+  HomeScreen: {
     screen: TabNavigator
   },
+  DeckScreen: {
+    screen: DeckScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: navigation.state.params.title,
+    })
+  }
 })
 
 export default createAppContainer(StackNavigator)
