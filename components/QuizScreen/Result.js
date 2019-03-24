@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { gray, green, red } from '../../utils/colors'
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from '../../utils/notifications'
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +34,11 @@ const styles = StyleSheet.create({
 })
 
 class Result extends Component {
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification)
+  }
+
   onRestart = () => { this.props.restart() }
   onBackToDeck = () => { this.props.backToDeck() }
 
