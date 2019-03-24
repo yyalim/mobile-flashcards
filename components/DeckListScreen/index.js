@@ -6,7 +6,7 @@ import {
   FlatList
 } from 'react-native'
 
-import { handleReceiveDecks } from '../../actions/decks'
+import { handleInitialLoad } from '../../actions/shared'
 
 import DeckLink from './DeckLink'
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 
 class DeckListScreen extends Component {
   componentDidMount() {
-    this.props.handleReceiveDecks()
+    this.props.handleInitialLoad()
   }
 
   handleNavigation = (deck) => {
@@ -58,7 +58,7 @@ const mapStateToProps = ({ decks }, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleReceiveDecks: () => dispatch(handleReceiveDecks()),
+  handleInitialLoad: () => dispatch(handleInitialLoad()),
   ...ownProps
 })
 

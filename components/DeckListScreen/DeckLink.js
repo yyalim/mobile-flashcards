@@ -26,6 +26,7 @@ class DeckLink extends Component {
 
   render() {
     const { title, cards } = this.props.deck
+    
     const cardsCount = cards.length
 
     return (

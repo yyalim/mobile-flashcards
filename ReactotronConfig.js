@@ -7,6 +7,9 @@ const customCommands = (tron, payload) => {
     case 'removeDecks':
       tron.display({ name: 'AsyncStorage', preview: 'Removing Decks...' })
       _removeDecks()
+    case 'removeCards':
+      tron.display({ name: 'AsyncStorage', preview: 'Removing Cards...' })
+      _removeCards()
     default:
       return false
   }

@@ -7,6 +7,7 @@ import {
 import DeckListScreen from '../DeckListScreen'
 import NewDeckScreen from '../NewDeckScreen'
 import DeckScreen from '../DeckScreen'
+import NewCardScreen from '../NewCardScreen'
 
 const TabNavigator = createMaterialTopTabNavigator({
   DeckListScreen: {
@@ -36,6 +37,12 @@ const StackNavigator = createStackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: navigation.state.params.title,
     })
+  },
+  NewCardScreen: {
+    screen: NewCardScreen,
+    navigationOptions: {
+      title: 'New Card'
+    }
   }
 })
 
