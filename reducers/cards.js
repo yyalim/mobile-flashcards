@@ -1,16 +1,16 @@
-import { CREATE_CARDS, RECEIVE_CARDS } from '../actions/cards'
+import { CREATE_CARD, RECEIVE_CARDS } from '../actions/cards'
 
-const cards = (state, action) => {
+const cards = (state = {}, action) => {
   switch(action.type) {
-    case CREATE_CARDS:
+    case CREATE_CARD:
       return {
         ...state,
-        ...action.question
+        ...action.card
       }
     case RECEIVE_CARDS:
       return {
         ...state,
-        ...actions.cards
+        ...action.cards
       }
     default:
       return state
