@@ -31,7 +31,7 @@ class DeckLink extends Component {
     return (
       <View style={styles.container}>
         <TouchableOpacity
-           onPress={this.handlePress}
+         onPress={this.handlePress}
         >
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.cardsCount}>{cardsCount} Cards</Text>

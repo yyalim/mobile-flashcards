@@ -1,4 +1,8 @@
-import { CREATE_DECK, RECEIVE_DECKS } from '../actions/decks'
+import {
+  CREATE_DECK,
+  RECEIVE_DECKS,
+  REMOVE_DECK
+} from '../actions/decks'
 
 const decks = (state = {}, action) => {
   switch(action.type) {
@@ -12,6 +16,9 @@ const decks = (state = {}, action) => {
         ...state,
         ...action.decks
       }
+    case REMOVE_DECK:
+      const { [action.id]: deck, ...rest} = state
+      return rest
   }
   return state
 }

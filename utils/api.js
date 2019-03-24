@@ -33,6 +33,21 @@ export const _receiveDecks = () => (
     .then(decks => JSON.parse(decks))
 )
 
+export const _removeDeck = deckId => (
+  AsyncStorage
+    .getItem(DECK_STORAGE_KEY)
+    .then(decks => JSON.parse(decks))
+    .then(decks => {
+      const { [deckId]: deck, ...rest } = decks
+
+      return rest
+    })
+    .then(decks => (
+      AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(decks))
+    ))
+    .then(() => deckId)
+)
+
 export const _removeDecks = () => {
   AsyncStorage.removeItem(DECK_STORAGE_KEY)
 }
