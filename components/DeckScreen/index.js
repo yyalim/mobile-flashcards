@@ -47,7 +47,11 @@ class DeckScreen extends Component {
     })
   }
 
-  handleNavigateToNewQuiz = () => {  }
+  handleNavigateToNewQuiz = () => {
+    const { deck, navigation } = this.props
+
+    navigation.navigate('QuizScreen', { deck })
+  }
 
   handleDeleteDeck = () => {
     const { deck, handleRemoveDeck, navigation } = this.props

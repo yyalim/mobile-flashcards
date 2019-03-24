@@ -1,5 +1,5 @@
 import Reactotron from 'reactotron-react-native'
-import { _removeDecks } from './utils/api'
+import { _removeDecks, _removeCards } from './utils/api'
 import { reactotronRedux } from 'reactotron-redux'
 
 const customCommands = (tron, payload) => {

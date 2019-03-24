@@ -8,6 +8,7 @@ import DeckListScreen from '../DeckListScreen'
 import NewDeckScreen from '../NewDeckScreen'
 import DeckScreen from '../DeckScreen'
 import NewCardScreen from '../NewCardScreen'
+import QuizScreen from '../QuizScreen'
 
 const TabNavigator = createMaterialTopTabNavigator({
   DeckListScreen: {
@@ -42,6 +43,12 @@ const StackNavigator = createStackNavigator({
     screen: NewCardScreen,
     navigationOptions: {
       title: 'New Card'
+    }
+  },
+  QuizScreen: {
+    screen: QuizScreen,
+    navigationOptions: {
+      title: 'Quiz'
     }
   }
 })
